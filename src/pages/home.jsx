@@ -1,5 +1,6 @@
-import Features from "../components/features";
-import Stats from "../components/stats";
+import Features from "../pages/features";
+import Stats from "../pages/stats";
+import News from "../pages/news";
 
 export default function Home() {
 
@@ -9,8 +10,8 @@ export default function Home() {
                 <div className="flex-none md:mt-0 md:max-w-xl">
                     <img
                         src="./assets/principal_imagen.jpg"
-                        className="md:rounded-tl-[108px] mt-5"
-                        alt="w-10"
+                        className="p-4 md:rounded-tl-[108px] "
+                        alt=""
                     />
                 </div>
                 <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
@@ -18,10 +19,10 @@ export default function Home() {
                         Si realmente amas la naturaleza, encontrarás belleza en todas partes.
                     </h2>
                     <p>
-                        Vincet Van Gogh.
+                        <strong className="font-style: italic">Vincet Van Gogh.</strong>
                     </p>
                     <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-                        <a href="#" className="block py-2 px-4 text-center text-white font-medium bg-green-600 duration-150 hover:bg-green-500 active:bg-green-700 rounded-lg shadow-lg hover:shadow-none">
+                        <a href="/signup" className="block py-2 px-4 text-center text-white font-medium bg-green-600 duration-150 hover:bg-green-500 active:bg-green-700 rounded-lg shadow-lg hover:shadow-none">
                             Empieza a cambiar el mundo
                         </a>
                         <a href="#learn-more" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex">
@@ -40,6 +41,10 @@ export default function Home() {
 
             <div>
                 <Stats />
+            </div>
+
+            <div>
+                <News />
             </div>
         </section>
     );

@@ -23,14 +23,24 @@ export default function Stats() {
         <section id="stats" className="py-14">
             <div className="max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
                 <div className="sm:hidden lg:block lg:max-w-xl">
-                    <img src="./assets/cocoraQuindio.jpg" className="rounded-lg" alt="" />
+                    <img 
+                        src="./assets/cocoraQuindio.jpg" 
+                        className="rounded-lg" 
+                        alt="" 
+                    />
                 </div>
                 <div className="mt-6 gap-12 sm:mt-0 md:flex lg:block">
                     <div className="max-w-2xl">
                         <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
                             La siguiente Información es tomada de:
                         </h3>
-                        <a href="https://www.iea.org/" className="max-w-xl text-green-900" target="_blank">Visita el siguiente Link</a>
+                        <a 
+                            href="https://www.iea.org/" 
+                            className="max-w-xl text-green-900 mt-4 inline-block" 
+                            target="_blank"
+                        >
+                            Visita el siguiente Link
+                        </a>
                     </div>
                     <div className="flex-none mt-6 md:mt-0 lg:mt-6">
                         <ul className="inline-grid gap-y-8 gap-x-14 grid-cols-2">

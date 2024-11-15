@@ -3,6 +3,7 @@ import Navbar from '../components/navbar';
 
 
 import Footer from '../components/footer';
+import News from '../pages/news';
 
 export default function Layout() {
     return (
