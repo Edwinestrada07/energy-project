@@ -21,17 +21,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 Component: Home 
-            }, 
+            },
+            {
+                path: '/login',
+                Component: Login
+            },
+            {
+                path: '/signup',
+                Component: Signup
+            }
         ] 
-    },
-    {
-        path: '/login',
-        Component: Login
-    },
-    {
-        path: '/signup',
-        Component: Signup
-    }
+    },  
 ])
 
 export default router

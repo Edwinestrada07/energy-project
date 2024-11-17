@@ -4,13 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function NavBar() {
     const [state, setState] = useState(false);
     const navigate = useNavigate();
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token')!== null); // Cambiar estado de autenticación según el token guardado en el localStorage
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token')!== null); 
 
-    // Replace javascript:void(0) paths with your paths
     const navigation = [
         { title: "Inicio", path: "/" },
         { information: "Información", path: "#stats" },
         { news: "Noticias", path: "#news"},
+        /*{ title: "Huella Carbono", path: "#" },
+        { title: "Consumo", path: "#" }*/
     ]
 
     const dashboardItems = [
@@ -72,9 +73,7 @@ export default function NavBar() {
                     </button>
                 </div>
 
-                <div
-                    className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}
-                >
+                <div className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
                     <ul className="justify-end items-center space-y-6 md:flex md:space-x-8 md:space-y-0">
                         {navigation.map((item, idx) => (
                             <li
@@ -115,13 +114,11 @@ export default function NavBar() {
                             </li>
                         )}
 
-                        {/* Show login required message */}
                         {!loggedIn && (
                             <li className="block py-2 px-4 font-medium text-center text-green-600 bg-white hover:bg-gray-100 active:bg-gray-200 rounded-lg shadow-md transition-all md:inline">
                                 Panel de Control
                             </li>
                         )}
-
 
                         <div className="text-white space-x-5">
                             {loggedIn ? (

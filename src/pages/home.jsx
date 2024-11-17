@@ -1,6 +1,6 @@
-import Features from "../pages/features";
-import Stats from "../pages/stats";
-import News from "../pages/news";
+import Features from "../components/features";
+import Stats from "../components/stats";
+import News from "../components/news";
 
 export default function Home() {
 
