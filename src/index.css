@@ -11,3 +11,7 @@
 body {
     color: rgb(42, 155, 207);
 }
+
+html {
+    scroll-behavior: smooth;
+}

@@ -6,7 +6,7 @@ export default function Footer() {
                 <p 
                     className="text-white sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
                 >
-                    © Sitio creado para el proyecto de Talento Tech
+                    © Sitio creado para el proyecto de Talento Tech, grupo 2 Energías Renovables Energy
                 </p>
             </div>
         </footer>
