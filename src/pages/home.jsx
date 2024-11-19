@@ -7,13 +7,13 @@ export default function Home() {
     return (
         <main>
             <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
-                <div className="flex-none md:mt-0 md:max-w-xl">
-                    <img
-                        src="./assets/principal_imagen.jpg"
-                        className="p-4 md:rounded-tl-[108px]"
-                        alt="Imagen destacada sobre la naturaleza"
-                        loading="lazy"
-                    />
+                <div className="flex justify-center md:max-w-lg">
+                <img
+                    src="./assets/principal_imagen.jpg"
+                    className="w-3/4 rounded-lg md:w-full"
+                    alt="Imagen destacada sobre la naturaleza"
+                    loading="lazy"
+                />
                 </div>
                 <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
                     <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
