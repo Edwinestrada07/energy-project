@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
     return (
         <main className="w-full h-screen flex items-center justify-center bg-cover bg-center"
@@ -10,12 +12,12 @@ export default function Login() {
                     </h3>
                     <p className="mt-2 text-sm">
                         ¿No tienes una cuenta? 
-                        <a 
-                            href="/signup" 
+                        <Link
+                            to="/signup"
                             className="font-medium text-green-600 hover:text-green-400 mx-1"
                         >
                             Regístrate
-                        </a>
+                        </Link>
                     </p>
                 </div>
 
