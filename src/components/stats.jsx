@@ -24,7 +24,7 @@ export default function Stats() {
             <div className="max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
                 <div className="sm:hidden lg:block lg:max-w-xl">
                     <img 
-                        src="./assets/cocoraQuindio.jpg" 
+                        src="./assets/jpg/cocoraQuindio.jpg" 
                         className="rounded-lg" 
                         alt="" 
                     />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Signup() {
     return (
         <main className="w-full h-screen flex items-center justify-center bg-cover bg-center" 
-                style={{ backgroundImage: "url('./assets/imagenSignup.jpg')" }}>
+                style={{ backgroundImage: "url('./assets/jpg/imagenSignup.jpg')" }}>
             <div className="w-full max-w-sm mx-4 bg-white p-6 shadow-lg rounded-lg space-y-6 text-gray-600">
                 {/* Header */}
                 <div className="text-center">

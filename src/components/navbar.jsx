@@ -16,7 +16,7 @@ export default function NavBar() {
         { title: "Inicio", path: "/" },
         { information: "Información", path: "#stats" },
         { news: "Noticias", path: "#news" },
-        { carbonoCalculator: "Calculadora Carbono", path: "#" },
+        { carbonoCalculator: "Calculadora Carbono", path: "/carbonoCalculator" },
         // { title: "Consumo", path: "#" }
     ];
 
@@ -34,7 +34,7 @@ export default function NavBar() {
                 {/* Logo y enlace al inicio */}
                 <Link to="/" className="title-font font-medium items-center text-white mb-4 md:mb-0">
                     <img 
-                        src="./assets/logo_energy.png" 
+                        src="./assets/png/logo_energy.png" 
                         className="h-20 w-30" 
                         alt="Logo de Energy" 
                     />

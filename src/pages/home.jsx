@@ -9,9 +9,9 @@ export default function Home() {
             <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
                 <div className="flex justify-center md:max-w-lg">
                 <img
-                    src="./assets/principal_imagen.jpg"
+                    src="./assets/jpg/principal_imagen.jpg"
                     className="w-3/4 rounded-lg md:w-full"
-                    alt="Imagen destacada sobre la naturaleza"
+                    alt="Imagen nombre Energy"
                     loading="lazy"
                 />
                 </div>

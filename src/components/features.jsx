@@ -3,37 +3,37 @@ export default function Features() {
     const features = [
         {
             icon:
-                <img className="w-22 h-22" src="./assets/planet.png" />,
+                <img className="w-22 h-22" src="./assets/png/planet.png" />,
             title: "Protección de la Biodiversidad",
             desc: "Reducir el impacto ambiental contribuye a conservar hábitats y evitar la extinción de especies, apoyando ecosistemas más saludables y resilientes."
         },
         {
             icon:
-                <img className="w-22 h-22" src="./assets/citygreen.png" />,
+                <img className="w-22 h-22" src="./assets/png/citygreen.png" />,
             title: "Economía más Resiliente",
             desc: "Al invertir en soluciones sostenibles, se crean empleos en sectores verdes y se construye una economía menos vulnerable a los impactos climáticos."
         },
         {
             icon:
-                <img className="w-22 h-22" src="./assets/agriculture.png" />,
+                <img className="w-22 h-22" src="./assets/png/agriculture.png" />,
             title: "Estabilidad y Seguridad Alimentaria",
             desc: "Controlar el cambio climático ayuda a mantener condiciones favorables para la agricultura, previniendo pérdidas de cultivos y garantizando un suministro alimentario estable."
         },
         {
             icon:
-                <img className="w-22 h-22" src="./assets/panelsolar.png" />,
+                <img className="w-22 h-22" src="./assets/png/panelsolar.png" />,
             title: "Energía Inagotable y Accesible",
             desc: "Las fuentes renovables como el sol y el viento son recursos abundantes y, en muchos casos, pueden ser aprovechados en regiones remotas o rurales, proporcionando energía limpia a comunidades marginadas."
         },
         {
             icon:
-                <img className="w-22 h-22" src="./assets/planet2.png" />,
+                <img className="w-22 h-22" src="./assets/png/planet2.png" />,
             title: "Disminución de la Dependencia de Combustibles Fósiles",
             desc: "Las energías renovables reducen la necesidad de importaciones de petróleo y gas, aumentando la seguridad energética y la independencia de cada país."
         },
         {
             icon:
-                <img className="w-22 h-22" src="./assets/empleogreen.png" />,
+                <img className="w-22 h-22" src="./assets/png/empleogreen.png" />,
             title: "Creación de Empleo Verde",
             desc: "La industria de las energías renovables genera empleos en investigación, desarrollo, instalación y mantenimiento, contribuyendo a un mercado laboral sustentable."
         },
