@@ -27,9 +27,9 @@ export default function Login() {
                     className="space-y-4"
                 >
                     <div>
-                        <label className="font-medium text-sm">Correo Electrónico</label>
+                        <label className="font-medium text-sm">Nombre Completo</label>
                         <input
-                            type="email"
+                            type="text"
                             required
                             className="w-full mt-1 px-3 py-2 text-sm text-gray-700 bg-gray-50 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-green-400"
                         />
