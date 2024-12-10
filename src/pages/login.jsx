@@ -45,7 +45,7 @@ export default function Login() {
                     className="space-y-4"
                 >
                     <div>
-                        <label className="font-medium text-sm">Nombre Completo</label>
+                        <label className="font-medium text-sm">Usuario</label>
                         <input
                             type="text"
                             value={username}

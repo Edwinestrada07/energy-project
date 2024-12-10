@@ -48,7 +48,7 @@ export default function NewsArticle() {
 
           <hr className="my-12" />
 
-          <CommentForm isLoggedIn={false} />
+          <CommentForm isLoggedIn={true} />
           <CommentList comments={mockComments} sortBy="newest" />
         </main>
       </div>
