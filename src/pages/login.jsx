@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import apiService from '../api/apiService';
 
 export default function Login() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await apiService.loginUsuario(username, password);
+            console.log(response);
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
     return (
         <main className="w-full h-screen flex items-center justify-center bg-cover bg-center"
                 style={{ backgroundImage: "url('./assets/jpg/imagenLogin.jpg')" }}>
@@ -23,13 +41,15 @@ export default function Login() {
 
                 {/* Form */}
                 <form
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleSubmit}
                     className="space-y-4"
                 >
                     <div>
                         <label className="font-medium text-sm">Nombre Completo</label>
                         <input
                             type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             required
                             className="w-full mt-1 px-3 py-2 text-sm text-gray-700 bg-gray-50 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-green-400"
                         />
@@ -38,6 +58,8 @@ export default function Login() {
                         <label className="font-medium text-sm">Contraseña</label>
                         <input
                             type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                             className="w-full mt-1 px-3 py-2 text-sm text-gray-700 bg-gray-50 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-green-400"
                         />
