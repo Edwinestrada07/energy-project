@@ -142,7 +142,7 @@ const apiService = {
 
     getResultCarbonoCalculatorById: async (pId) => {
         try {
-            const response = await apiClient.get(`/comment/news/${pId}`);
+            const response = await apiClient.get(`/carbono-calculator/${pId}`);
             return response.data;
         } catch (error) {
             return error.response.data;
