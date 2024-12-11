@@ -15,7 +15,6 @@ export default function Signup() {
 
         try {
             const data = {
-                id:0,
                 username: username,
                 email: email,
                 password: password,
