@@ -1,17 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import apiService from '../api/apiService';
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await apiService.loginUsuario(username, password);
-            console.log(response);
+            localStorage.setItem('token', response.id)
+            navigate('/');
 
         } catch (error) {
             console.error(error);
