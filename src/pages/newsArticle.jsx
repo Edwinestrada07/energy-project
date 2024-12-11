@@ -2,6 +2,9 @@ import ArticleHeader from "../components/article/ArticleHeader";
 import ArticleContent from "../components/article/ArticleContent";
 import CommentForm from "../components/comments/CommentForm";
 import CommentList from "../components/comments/CommentList";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import apiService from "../api/apiService";
 
 const mockComments = [
   {
@@ -32,19 +35,38 @@ const mockComments = [
   },
 ];
 export default function NewsArticle() {
+  const [oneNews,setOneNews] = useState({});
+  const { id } = useParams();
+  useEffect(()=>{
+    async function fetchData() {    
+        let idToInt = parseInt(id);
+        let getANews = await apiService.getNewById(idToInt);
+        const isoToDate = new Date(getANews.datePublish);
+        const beautifyTime = new Intl.DateTimeFormat('en-US',{
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        }).format(isoToDate)
+        console.log(beautifyTime);
+        getANews = {...getANews,datePublish:beautifyTime}
+        setOneNews(getANews);
+    }
+    fetchData();
+  },[])
   return (
     <main>
       <div className="min-h-screen bg-gray-50">
         <main className="max-w-4xl mx-auto px-4 py-8">
           <ArticleHeader
-            title="Climate Crisis: New Research Shows Accelerating Impact"
-            author="Dr. James Wilson"
-            date="March 15, 2024"
-            readingTime="8 min"
+            title={oneNews.title}
+            author={oneNews.author}
+            // date="March 15, 2024"
+            date={oneNews.datePublish}
+            readingTime={`${Math.floor(Math.random()*5)} min`}
             category="Environment"
           />
 
-          <ArticleContent />
+          <ArticleContent content={oneNews.content} />
 
           <hr className="my-12" />
 
