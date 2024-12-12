@@ -35,24 +35,51 @@ const mockComments = [
   },
 ];
 export default function NewsArticle() {
-  const [oneNews,setOneNews] = useState({});
+  const [oneNews, setOneNews] = useState({});
+  const [logged, setLogged] = useState(false);
+  const [comments, setComments] = useState([]);
+
   const { id } = useParams();
-  useEffect(()=>{
-    async function fetchData() {    
-        let idToInt = parseInt(id);
-        let getANews = await apiService.getNewById(idToInt);
-        const isoToDate = new Date(getANews.datePublish);
-        const beautifyTime = new Intl.DateTimeFormat('en-US',{
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric',
-        }).format(isoToDate)
-        console.log(beautifyTime);
-        getANews = {...getANews,datePublish:beautifyTime}
-        setOneNews(getANews);
+  useEffect(() => {
+    let checkIsLogged = localStorage.getItem("token");
+    if (checkIsLogged) {
+      setLogged(true);
     }
-    fetchData();
-  },[])
+    async function fetchNews() {
+      let idToInt = parseInt(id);
+      let getANews = await apiService.getNewById(idToInt);
+      const isoToDate = new Date(getANews.datePublish);
+      const beautifyTime = new Intl.DateTimeFormat("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }).format(isoToDate);
+      console.log(beautifyTime);
+      getANews = { ...getANews, datePublish: beautifyTime };
+      setOneNews(getANews);
+    }
+    fetchNews();
+
+    async function fetchCommentsNews() {
+      let idToInt = parseInt(id);
+      let getComments = await apiService.getAllCommentsByNewsId(idToInt);
+      console.log(getComments);
+      let cleanUpComments = getComments.map((comment, i) => {
+        return {
+          id: comment.id,
+          user: {
+            name: comment.user.username,
+            avatar:"https://random-image-pepebigotes.vercel.app/api/random-image",
+              // "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+          content:comment.body,
+          // timestamp: `${Math.floor(Math.random()*)} hours ago`,
+        };
+    });
+      setComments(cleanUpComments);
+    }
+    fetchCommentsNews();
+  }, []);
   return (
     <main>
       <div className="min-h-screen bg-gray-50">
@@ -60,9 +87,8 @@ export default function NewsArticle() {
           <ArticleHeader
             title={oneNews.title}
             author={oneNews.author}
-            // date="March 15, 2024"
             date={oneNews.datePublish}
-            readingTime={`${Math.floor(Math.random()*5)} min`}
+            readingTime={`${Math.floor(Math.random() * 5)} min`}
             category="Environment"
           />
 
@@ -70,8 +96,8 @@ export default function NewsArticle() {
 
           <hr className="my-12" />
 
-          <CommentForm isLoggedIn={true} />
-          <CommentList comments={mockComments} sortBy="newest" />
+          <CommentForm isLoggedIn={logged} newsId={parseInt(id)} />
+          <CommentList comments={comments} sortBy="newest" />
         </main>
       </div>
     </main>

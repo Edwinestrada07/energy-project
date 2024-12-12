@@ -102,7 +102,7 @@ const apiService = {
 
     /*Comments*/
 
-    insertComment: async (data) => {
+    insertComment: async (pId,data) => {
         try {
             const response = await apiClient.post(`/comment/news/${pId}`, data);
             return response.data;
@@ -111,7 +111,7 @@ const apiService = {
         }
     },
 
-    getAllCommentsByNewsId: async () => {
+    getAllCommentsByNewsId: async (pId) => {
         try {
             const response = await apiClient.get(`/comment/news/${pId}`);
             return response.data;
