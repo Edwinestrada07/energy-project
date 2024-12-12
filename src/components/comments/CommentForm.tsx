@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,Dispatch, SetStateAction } from "react";
 import apiService from "../../api/apiService";
 import { Link } from "react-router-dom";
 
 interface CommentFormProps {
   isLoggedIn: boolean;
+  setNewComment : React.Dispatch<React.SetStateAction<any>>;
   newsId: number;
 }
 
-export default function CommentForm({ isLoggedIn, newsId }: CommentFormProps) {
+export default function CommentForm({ isLoggedIn, setNewComment, newsId }: CommentFormProps) {
   const [comment, setComment] = useState("");
   const maxLength = 500;
 
@@ -25,6 +26,7 @@ export default function CommentForm({ isLoggedIn, newsId }: CommentFormProps) {
           body: comment,
           user_id: parseInt(userId),
         });
+        setNewComment(true);
       }
       // hacer un then para llamar otravez todos los comments con el nuevo
       // .then(
