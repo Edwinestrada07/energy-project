@@ -37,7 +37,7 @@ export default function Signup() {
     return (
         <main className="w-full h-screen flex items-center justify-center bg-cover bg-center"
             style={{ backgroundImage: "url('./assets/jpg/imagenSignup.jpg')" }}>
-            <div className="w-full max-w-sm mx-4 bg-white p-6 shadow-lg rounded-lg space-y-6 text-gray-600">
+            <div className="m-4 w-full max-w-sm mx-4 bg-white p-6 shadow-lg rounded-lg space-y-6 text-gray-600">
                 {/* Header */}
                 <div className="text-center">
                     <h3 className="mt-4 text-gray-800 text-xl font-bold sm:text-2xl">
