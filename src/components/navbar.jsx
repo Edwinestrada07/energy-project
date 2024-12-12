@@ -43,7 +43,7 @@ export default function NavBar({loggedIn,setLoggedIn}) {
                 {/* Logo y enlace al inicio */}
                 <Link to="/" className="title-font font-medium items-center text-white mb-4 md:mb-0">
                     <img 
-                        src="./assets/png/logo_energy.png" 
+                        src="/assets/png/logo_energy.png" 
                         className="h-20 w-30" 
                         alt="Logo de Energy" 
                     />

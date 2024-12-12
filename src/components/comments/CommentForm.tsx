@@ -17,8 +17,6 @@ export default function CommentForm({ isLoggedIn, setNewComments, newsId }: Comm
     try {
       console.log(comment);
       console.log(newsId);
-      // const response = await apiService.loginUsuario(username, password);
-      // localStorage.setItem('token', response.id)
       let userId = localStorage.getItem("token");
       if (userId) {
         console.log({ userId });
@@ -32,10 +30,8 @@ export default function CommentForm({ isLoggedIn, setNewComments, newsId }: Comm
           setNewComments(true);
         },1000)
         console.log("despues de ejecutar newcomments")
+        setComment("")
       }
-      // hacer un then para llamar otravez todos los comments con el nuevo
-      // .then(
-      // )
     } catch (error) {
       console.error(error);
     }
