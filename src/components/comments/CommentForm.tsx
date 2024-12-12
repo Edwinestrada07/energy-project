@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 interface CommentFormProps {
   isLoggedIn: boolean;
-  setNewComment : React.Dispatch<React.SetStateAction<any>>;
+  setNewComments : React.Dispatch<React.SetStateAction<any>>;
   newsId: number;
 }
 
-export default function CommentForm({ isLoggedIn, setNewComment, newsId }: CommentFormProps) {
+export default function CommentForm({ isLoggedIn, setNewComments, newsId }: CommentFormProps) {
   const [comment, setComment] = useState("");
   const maxLength = 500;
 
@@ -26,7 +26,12 @@ export default function CommentForm({ isLoggedIn, setNewComment, newsId }: Comme
           body: comment,
           user_id: parseInt(userId),
         });
-        setNewComment(true);
+        console.log("antes de ejecutar newcomments")
+        setTimeout(()=>{
+          console.log("ejecutando.... newcomments")
+          setNewComments(true);
+        },1000)
+        console.log("despues de ejecutar newcomments")
       }
       // hacer un then para llamar otravez todos los comments con el nuevo
       // .then(

@@ -38,8 +38,8 @@ export default function NewsArticle() {
   const [oneNews, setOneNews] = useState({});
   const [logged, setLogged] = useState(false);
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState(false);
-  
+  const [newComments, setNewComments] = useState(false);
+
   const { id } = useParams();
   useEffect(() => {
     let checkIsLogged = localStorage.getItem("token");
@@ -80,7 +80,8 @@ export default function NewsArticle() {
       setComments(cleanUpComments);
     }
     fetchCommentsNews();
-  },[newComment]);
+    setNewComments(false);
+  },[newComments]);
   return (
     <main>
       <div className="min-h-screen bg-gray-50">
@@ -97,7 +98,7 @@ export default function NewsArticle() {
 
           <hr className="my-12" />
 
-          <CommentForm isLoggedIn={logged} setNewComment={setNewComment} newsId={parseInt(id)} />
+          <CommentForm isLoggedIn={logged} setNewComments={setNewComments} newsId={parseInt(id)} />
           <CommentList comments={comments} sortBy="newest" />
         </main>
       </div>

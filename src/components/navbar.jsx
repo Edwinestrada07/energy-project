@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar({loggedIn,setLoggedIn}) {
     // Estado para manejar la visibilidad del menú en dispositivos pequeños
     const [state, setState] = useState(false);
 
     // Hook para redireccionar entre páginas
     const navigate = useNavigate();
     //const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null);
-    const [loggedIn, setLoggedIn] = useState(false);
+    //const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
         if(localStorage.getItem('token') !== null){
             setLoggedIn(true);
         }
-      });
+      },[loggedIn]);
 
     // Estado que verifica si el usuario está autenticado basado en un token guardado en el almacenamiento local
 

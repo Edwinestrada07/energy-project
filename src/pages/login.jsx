@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import apiService from '../api/apiService';
 
 export default function Login() {
+    const [loggedIn,setLoggedIn] = useOutletContext();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -14,6 +15,7 @@ export default function Login() {
             const response = await apiService.loginUsuario(username, password);
             if(response.id > 0){
                 localStorage.setItem('token', response.id);
+                setLoggedIn(true)
                 navigate('/');
             }
         } catch (error) {
