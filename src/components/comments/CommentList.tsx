@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThumbsUp, MessageCircle, MoreVertical } from 'lucide-react';
+import { ThumbsUp, MessageCircle, MoreVertical, ThumbsDown } from 'lucide-react';
 
 interface Comment {
   id: number;
@@ -18,6 +18,36 @@ interface CommentListProps {
   sortBy: 'newest' | 'oldest' | 'mostLiked';
 }
 
+
+const mockComments = [
+  {
+    id: 1,
+    user: {
+      name: "Alex Thompson",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+    content:
+      "This is a very insightful article. The research presented here really puts things into perspective.",
+    timestamp: "2 hours ago",
+    likes: 15,
+    replies: 3,
+  },
+  {
+    id: 2,
+    user: {
+      name: "Sarah Chen",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+    content:
+      "I appreciate how the article breaks down complex climate data into understandable terms.",
+    timestamp: "5 hours ago",
+    likes: 8,
+    replies: 1,
+  },
+];
+let comments = mockComments;
 export default function CommentList({ comments, sortBy }: CommentListProps) {
   return (
     <div className="space-y-6">
@@ -46,7 +76,7 @@ export default function CommentList({ comments, sortBy }: CommentListProps) {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-semibold">{comment.user.name}</h3>
-                  <p className="text-sm text-gray-500">{comment.timestamp}</p>
+                  {/* <p className="text-sm text-gray-500">{comment.timestamp}</p> */}
                 </div>
                 <button className="p-1 hover:bg-gray-100 rounded-full">
                   <MoreVertical className="h-5 w-5" />
@@ -59,9 +89,13 @@ export default function CommentList({ comments, sortBy }: CommentListProps) {
                   <span>{comment.likes}</span>
                 </button>
                 <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
+                  <ThumbsDown className="h-4 w-4" />
+                  <span>{comment.likes}</span>
+                </button>
+                {/* <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
                   <MessageCircle className="h-4 w-4" />
                   <span>{comment.replies}</span>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

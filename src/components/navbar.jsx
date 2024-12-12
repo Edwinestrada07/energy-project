@@ -15,8 +15,7 @@ export default function NavBar() {
     const navigation = [
         { title: "Inicio", path: "/" },
         { information: "Información", path: "#stats" },
-        // { news: "Noticias", path: "#news" },
-        { news: "Noticias2", path: "/newsArticle" },
+        { news: "Noticias", path: "/#news" },
         { carbonoCalculator: "Calculadora Carbono", path: "/carbonoCalculator" },
         // { title: "Consumo", path: "#" }
     ];
