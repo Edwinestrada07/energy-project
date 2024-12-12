@@ -1,9 +1,13 @@
 import { Outlet } from 'react-router-dom'; 
 import Navbar from '../components/navbar'; 
 import Footer from '../components/footer'; 
+import { useState } from 'react';
 
 // La función Layout se utiliza como el layout principal en la app.
 export default function Layout() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    
+
     return (
         // La estructura principal está diseñada como un contenedor de pantalla completa con una disposición en columna.
         <div className="h-screen flex flex-col">

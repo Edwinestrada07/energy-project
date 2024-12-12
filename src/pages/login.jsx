@@ -12,9 +12,10 @@ export default function Login() {
         e.preventDefault();
         try {
             const response = await apiService.loginUsuario(username, password);
-            localStorage.setItem('token', response.id)
-            navigate('/');
-
+            if(response.id > 0){
+                localStorage.setItem('token', response.id);
+                navigate('/');
+            }
         } catch (error) {
             console.error(error);
         }

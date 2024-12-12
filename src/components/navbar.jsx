@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
@@ -7,9 +7,17 @@ export default function NavBar() {
 
     // Hook para redireccionar entre páginas
     const navigate = useNavigate();
+    //const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if(localStorage.getItem('token') !== null){
+            setLoggedIn(true);
+        }
+      });
 
     // Estado que verifica si el usuario está autenticado basado en un token guardado en el almacenamiento local
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null);
+
 
     // Elementos principales del menú de navegación
     const navigation = [
@@ -26,6 +34,7 @@ export default function NavBar() {
         setLoggedIn(false); // Cambia el estado a no autenticado
         navigate('/'); // Redirecciona al inicio
     };
+  
 
     return (
         <nav className="bg-green-600 w-full border-b md:border-0 sticky top-0 z-50">
