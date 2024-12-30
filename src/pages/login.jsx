@@ -1,18 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import apiService from '../api/apiService';
 
 export default function Login() {
+    const [loggedIn,setLoggedIn] = useOutletContext();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await apiService.loginUsuario(username, password);
-            console.log(response);
-
+            if(response.id > 0){
+                localStorage.setItem('token', response.id);
+                setLoggedIn(true)
+                navigate('/');
+            }
         } catch (error) {
             console.error(error);
         }
@@ -22,7 +27,7 @@ export default function Login() {
     return (
         <main className="w-full h-screen flex items-center justify-center bg-cover bg-center"
                 style={{ backgroundImage: "url('./assets/jpg/imagenLogin.jpg')" }}>
-            <div className="w-full max-w-sm mx-4 bg-white p-6 shadow-lg rounded-lg space-y-6 text-gray-600">
+            <div className="m-4 w-full max-w-sm mx-4 bg-white p-6 shadow-lg rounded-lg space-y-6 text-gray-600">
                 {/* Header */}
                 <div className="text-center">
                     <h3 className="mt-4 text-gray-800 text-xl font-bold sm:text-2xl">

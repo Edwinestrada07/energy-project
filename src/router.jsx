@@ -40,7 +40,7 @@ const router = createBrowserRouter([
                 Component: CarbonoCalculator,
             },
             {
-                path: '/newsArticle',
+                path: '/newsArticle/:id',
                 Component: NewsArticle,
             }
         ],

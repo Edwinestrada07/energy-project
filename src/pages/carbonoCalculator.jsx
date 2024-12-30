@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "aaxios";
 import { useState } from "react";
 import apiService from "../api/apiService";
 
@@ -25,19 +25,13 @@ export default function CarbonoCalculator({ userId }) {
     const saveResult = async (calculatedResult) => {
         const currentDate = new Date().toISOString().slice(0, 10);
 
-        const storedUser = localStorage.getItem("token");
-        const user = storedUser ? JSON.parse(storedUser) : null;
-
-        if(!user || !user.id) {
-            console.error("No se ha encontrado el usuario en localStorage");
-            setMessage("No se pudo guardar el resultado");
-            return;
-        }
+        const storedUser = parseInt(localStorage.getItem("token"));
+        console.log(storedUser);
 
         const data = {
             result: calculatedResult,
             user: {
-                id: user.id,
+                id: storedUser,
             },
             date_result: currentDate
         }

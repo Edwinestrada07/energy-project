@@ -1,22 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar({loggedIn,setLoggedIn}) {
     // Estado para manejar la visibilidad del menú en dispositivos pequeños
     const [state, setState] = useState(false);
 
     // Hook para redireccionar entre páginas
     const navigate = useNavigate();
+    //const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null);
+    //const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if(localStorage.getItem('token') !== null){
+            setLoggedIn(true);
+        }
+      },[loggedIn]);
 
     // Estado que verifica si el usuario está autenticado basado en un token guardado en el almacenamiento local
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null);
+
 
     // Elementos principales del menú de navegación
     const navigation = [
         { title: "Inicio", path: "/" },
         { information: "Información", path: "#stats" },
-        // { news: "Noticias", path: "#news" },
-        { news: "Noticias2", path: "/newsArticle" },
+        { news: "Noticias", path: "/#news" },
         { carbonoCalculator: "Calculadora Carbono", path: "/carbonoCalculator" },
         // { title: "Consumo", path: "#" }
     ];
@@ -27,6 +34,7 @@ export default function NavBar() {
         setLoggedIn(false); // Cambia el estado a no autenticado
         navigate('/'); // Redirecciona al inicio
     };
+  
 
     return (
         <nav className="bg-green-600 w-full border-b md:border-0 sticky top-0 z-50">
@@ -35,7 +43,7 @@ export default function NavBar() {
                 {/* Logo y enlace al inicio */}
                 <Link to="/" className="title-font font-medium items-center text-white mb-4 md:mb-0">
                     <img 
-                        src="./assets/png/logo_energy.png" 
+                        src="/assets/png/logo_energy.png" 
                         className="h-20 w-30" 
                         alt="Logo de Energy" 
                     />
@@ -101,9 +109,12 @@ export default function NavBar() {
                         <div className="text-white space-x-5 md:flex">
                             {loggedIn ? (
                                 <button
-                                    className="mb-2 py-2 px-2 text-white bg-cyan-500 hover:bg-cyan-600 rounded-md shadow"
+                                    className="block py-2 px-4  text-white hover:bg-white hover:text-green-600 border border-white rounded-lg md:border-none transition-colors"
                                     onClick={logout}
-                                    >
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block mr-2">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" />
+                                    </svg>
                                     Cerrar Sesión
                                 </button>
                             ) : (
