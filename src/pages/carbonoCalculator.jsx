@@ -1,12 +1,15 @@
+import axios from "axios";
 import { useState } from "react";
+import apiService from "../api/apiService";
 
-export default function CarbonoCalculator() {
+export default function CarbonoCalculator({ userId }) {
     const [transportation, setTransportation] = useState(0);
     const [energy, setEnergy] = useState(0);
     const [food, setFood] = useState(0);
     const [waste, setWaste] = useState(0);
     const [water, setWater] = useState(0);
     const [result, setResult] = useState(0);
+    const [message, setMessage] = useState("");
 
     const carbonFootprint = () => {
         const transportationScore = transportation * 3.0;
@@ -16,6 +19,37 @@ export default function CarbonoCalculator() {
         const waterScore = water * 1.5;
         const totalScore = transportationScore + energyScore + foodScore + wasteScore + waterScore;
         setResult(totalScore);
+        saveResult(totalScore);
+    }
+
+    const saveResult = async (calculatedResult) => {
+        const currentDate = new Date().toISOString().slice(0, 10);
+
+        const storedUser = localStorage.getItem("token");
+        const user = storedUser ? JSON.parse(storedUser) : null;
+
+        if(!user || !user.id) {
+            console.error("No se ha encontrado el usuario en localStorage");
+            setMessage("No se pudo guardar el resultado");
+            return;
+        }
+
+        const data = {
+            result: calculatedResult,
+            user: {
+                id: user.id,
+            },
+            date_result: currentDate
+        }
+        
+        try {
+            console.log(data)
+            const response = await apiService.insertResultCarbonoCalculator(data);
+            setMessage("Resultado guardado con éxito")
+        } catch (error) {
+            console.error("Error al guardar el resultado:", error);
+            setMessage("Error al guardar el resultado");
+        }
     }
 
     return (
@@ -113,7 +147,7 @@ export default function CarbonoCalculator() {
                         onClick={carbonFootprint} 
                         className="w-full px-4 py-2 text-sm text-white font-medium bg-green-600 hover:bg-green-500 active:bg-green-700 rounded-lg shadow focus:outline-none"
                     >
-                        Calcular Huella de Carbono
+                        Calcular y Guardar Huella de Carbono
                     </button>
                 </form>
 

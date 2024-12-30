@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Signup from './pages/signup';
 import Login from './pages/login';
 import CarbonoCalculator from './pages/carbonoCalculator'
+import NewsArticle from './pages/newsArticle';
 
 // Define la función loader para rutas protegidas
 // Esta función verifica si el token de autenticación está en localStorage.
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: '/carbonoCalculator',
                 Component: CarbonoCalculator,
+            },
+            {
+                path: '/newsArticle',
+                Component: NewsArticle,
             }
         ],
     },
